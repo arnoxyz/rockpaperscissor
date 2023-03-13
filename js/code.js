@@ -84,6 +84,40 @@ function checkPlayerInput(playerSelection){
 
 
 function main(){
+	uiEdition();
+}
+
+function uiEdition(){
+	let playerSelection = "r";
+	let computerSelection = "r";
+	let output = '';
+	let counter = 0;
+
+	//TODO: get playerSelection from button click
+	//TODO: output score and informations
+	
+	/*
+	while (counter < rounds) {
+		//playerSelection = prompt("enter your choice [r,p,s] ???");
+		if(checkPlayerInput(playerSelection)!='-1'){
+		computerSelection = getComputerChoice();
+			//console.log("you:" + playerSelection + " vs. "+"KI:" + computerSelection);
+			output = playRound(playerSelection, computerSelection);
+			if (output == '-1'){
+				break;
+			}else{
+				console.log(output);
+			}
+			console.log("round= "+score+", score="+output);	
+			counter++;
+		}else{
+			console.log("invalid input! please insert: r,p or s");
+		}
+	}
+	*/
+}
+
+function consoleEdition(){
 	console.log("Welcome to the rps game!");
 	console.log("Enter [r,rock] or [p,paper] or [s,scissor]");
 	let playerSelection = "r";
