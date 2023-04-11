@@ -1,9 +1,24 @@
 //starts the program
 let score = 0;
 let rounds = 0;
-let playerSelection = "r";
-let computerSelection = "r";
 main();
+
+function main(){
+	uiEdition();
+}
+
+
+/*
+ * plays one round in gui mode
+*/
+function gui_playRound(playerSelection){
+	guiReset();
+	computerSelection = getComputerChoice();
+	output = playRound(playerSelection, computerSelection);
+	printResult(playerSelection);
+}
+
+
 
 /*
 gets random number and % 3 will provide the choice
@@ -70,62 +85,83 @@ function playRound(playerSelection, computerSelection){
 	}
 }
 
-function checkPlayerInput(playerSelection){
-	if(playerSelection == null){
-		return '-1';
-	}
-	if(playerSelection == 'r' || playerSelection.toLowerCase() == 'rock'){
-		return "r";
-	}else if(playerSelection == 's' || playerSelection.toLowerCase() == 'scissor'){
-		return "s";
-	}else if(playerSelection == 'p' || playerSelection.toLowerCase() == 'paper'){
-		return 'p';
-	}else{
-		return '-1';
-	}
-}
 
-
-function main(){
-	uiEdition();
-}
 
 function uiEdition(){
-
-
         const btn_r = document.querySelector("#player_r");
 	btn_r.addEventListener('click', () => {
 		playerSelecton = "r";
-		gui_playRound();
+		gui_playRound("r");
 	});
 
         const btn_p = document.querySelector("#player_p");
 	btn_p.addEventListener('click', () => {
 		playerSelecton = "p";
-		gui_playRound();
+		gui_playRound("p");
 	});
         const btn_s = document.querySelector("#player_s");
 	btn_s.addEventListener('click', () => {
 		playerSelecton = "s";
-		gui_playRound();
+		gui_playRound("s");
 	});
 }
 
-function gui_playRound(){
-	alert("starting round " + rounds);
 
-	if (rounds === 1){
-		//end game
-		alert("game over");
-	}else{
-		computerSelection = getComputerChoice();
-		output = playRound(playerSelection, computerSelection);
-		alert(output + " " + "your score is: " + score);
-		rounds = rounds + 1;
+/*
+ * prints the result under the input buttons
+*/
+function printResult(playerSelection){
+	//show inputs (add other background to the selected buttons)
+        const btn_player_input_r = document.querySelector("#player_r");
+        const btn_player_input_p = document.querySelector("#player_p");
+        const btn_player_input_s = document.querySelector("#player_s");
+
+	if(playerSelection == "r"){
+		btn_player_input_r.innerHTML = "rock";
+	}else if(playerSelection == "p"){
+		btn_player_input_p.innerHTML = "paper";
+	}else if(playerSelection == "s"){
+		btn_player_input_s.innerHTML = "scissor";
 	}
+
+        const btn_ki_input_r= document.querySelector("#ki_r");
+        const btn_ki_input_p= document.querySelector("#ki_p");
+        const btn_ki_input_s= document.querySelector("#ki_s");
+
+	if(computerSelection == "r"){
+		btn_ki_input_r.innerHTML = "rock";
+	}else if(computerSelection == "p"){
+		btn_ki_input_p.innerHTML = "paper";
+	}else if(computerSelection == "s"){
+		btn_ki_input_s.innerHTML = "scissor";
+	}
+	
+	//output winner 
+	//alert(output + "hello");
+        const outputElement = document.querySelector("#output");
+	outputElement.innerHTML = output;
+
+}
+
+function guiReset(){
+        const btn_player_input_r = document.querySelector("#player_r");
+        const btn_player_input_p = document.querySelector("#player_p");
+        const btn_player_input_s = document.querySelector("#player_s");
+        const btn_ki_input_r= document.querySelector("#ki_r");
+        const btn_ki_input_p= document.querySelector("#ki_p");
+        const btn_ki_input_s= document.querySelector("#ki_s");
+
+	btn_player_input_r.innerHTML = "r";
+	btn_player_input_p.innerHTML = "p";
+	btn_player_input_s.innerHTML = "s";
+
+	btn_ki_input_r.innerHTML = "r";
+	btn_ki_input_p.innerHTML = "p";
+	btn_ki_input_s.innerHTML = "s";
 }
 
 
+/* CONSOLE STUFF */
 function consoleEdition(){
 	console.log("Welcome to the rps game!");
 	console.log("Enter [r,rock] or [p,paper] or [s,scissor]");
@@ -153,3 +189,17 @@ function consoleEdition(){
 	}
 }
 
+function checkPlayerInput(playerSelection){
+	if(playerSelection == null){
+		return '-1';
+	}
+	if(playerSelection == 'r' || playerSelection.toLowerCase() == 'rock'){
+		return "r";
+	}else if(playerSelection == 's' || playerSelection.toLowerCase() == 'scissor'){
+		return "s";
+	}else if(playerSelection == 'p' || playerSelection.toLowerCase() == 'paper'){
+		return 'p';
+	}else{
+		return '-1';
+	}
+}
