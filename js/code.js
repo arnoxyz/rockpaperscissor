@@ -1,6 +1,8 @@
 //starts the program
 let score = 0;
-let rounds = 5;
+let rounds = 0;
+let playerSelection = "r";
+let computerSelection = "r";
 main();
 
 /*
@@ -67,6 +69,7 @@ function playRound(playerSelection, computerSelection){
 		}
 	}
 }
+
 function checkPlayerInput(playerSelection){
 	if(playerSelection == null){
 		return '-1';
@@ -88,34 +91,40 @@ function main(){
 }
 
 function uiEdition(){
-	let playerSelection = "r";
-	let computerSelection = "r";
-	let output = '';
-	let counter = 0;
 
-	//TODO: get playerSelection from button click
-	//TODO: output score and informations
-	
-	/*
-	while (counter < rounds) {
-		//playerSelection = prompt("enter your choice [r,p,s] ???");
-		if(checkPlayerInput(playerSelection)!='-1'){
-		computerSelection = getComputerChoice();
-			//console.log("you:" + playerSelection + " vs. "+"KI:" + computerSelection);
-			output = playRound(playerSelection, computerSelection);
-			if (output == '-1'){
-				break;
-			}else{
-				console.log(output);
-			}
-			console.log("round= "+score+", score="+output);	
-			counter++;
-		}else{
-			console.log("invalid input! please insert: r,p or s");
-		}
-	}
-	*/
+
+        const btn_r = document.querySelector("#player_r");
+	btn_r.addEventListener('click', () => {
+		playerSelecton = "r";
+		gui_playRound();
+	});
+
+        const btn_p = document.querySelector("#player_p");
+	btn_p.addEventListener('click', () => {
+		playerSelecton = "p";
+		gui_playRound();
+	});
+        const btn_s = document.querySelector("#player_s");
+	btn_s.addEventListener('click', () => {
+		playerSelecton = "s";
+		gui_playRound();
+	});
 }
+
+function gui_playRound(){
+	alert("starting round " + rounds);
+
+	if (rounds === 1){
+		//end game
+		alert("game over");
+	}else{
+		computerSelection = getComputerChoice();
+		output = playRound(playerSelection, computerSelection);
+		alert(output + " " + "your score is: " + score);
+		rounds = rounds + 1;
+	}
+}
+
 
 function consoleEdition(){
 	console.log("Welcome to the rps game!");
@@ -124,7 +133,7 @@ function consoleEdition(){
 	let computerSelection = "r";
 	let output = '';
 	let counter = 0;
-
+	
 	while (counter < rounds) {
 		playerSelection = prompt("enter your choice [r,p,s] ???");
 		if(checkPlayerInput(playerSelection)!='-1'){

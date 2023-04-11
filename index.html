@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <title>rps</title>
-    <script src="./js/code.js"></script>
+    <script src="./js/code.js" defer></script>
 </head>
 <body>
-    <h1>rps - game</h1>
-    <h2>rock paper scissor game</h2>
-    <button class="btn r">r</button>
-    <button class="btn p">p</button>
-    <button class="btn s">s</button>
+    <header>
+	    <h1>rps - game</h1>
+	    <h2>rock paper scissor game</h2>
+    </header>
+
+    <div class="playground">
+	    <h2>Player</h2>
+	    <button id="player_r" class="btn_player">r</button>
+	    <button id="player_p" class="btn_player">p</button>
+	    <button id="player_s" class="btn_player">s</button>
+	    <h2>KI</h2>
+	    <button id="ki_r" class="btn_ki">r</button>
+	    <button id="ki_p" class="btn_ki">p</button>
+	    <button id="ki_s" class="btn_ki">s</button>
+    <div>
 </body>
 </html>
