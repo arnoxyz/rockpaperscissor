@@ -1,5 +1,47 @@
 
 body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 	text-align: center;
 }
+h2{
+	width: 300px;
+}
 
+.playground{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
+}
+
+#player,
+#ki{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.btn_player,
+.btn_ki{
+	padding: 15px 40px;
+	margin: 10px;
+	border: solid black 2px;
+	width: 150px;
+}
+.btn_player{
+	background-color: green;	
+	cursor: pointer; 
+}
+.btn_player:hover{
+	background-color: lightgreen;
+}
+.btn_player:active{
+	transform: scale(95%);
+}
+.btn_ki{
+	background-color: red;	
+}
